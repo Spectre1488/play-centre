@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jump Planet — Kids’ Party &amp; Play Centre</title>
+<style>
+:root{--bg:#f4f5fb;--card:#fff;--text:#14172e;--muted:#5f6484;--accent:#5b34ee;--accent-t:#fff;--soft:#ece8ff;--line:#e2e4f2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1020;--card:#191c33;--text:#eef0ff;--muted:#a1a7cf;--accent:#8e6dff;--accent-t:#0e1020;--soft:#262a4f;--line:#2a2e4d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1020;--card:#191c33;--text:#eef0ff;--muted:#a1a7cf;--accent:#8e6dff;--accent-t:#0e1020;--soft:#262a4f;--line:#2a2e4d;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:20}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.nav .w{display:flex;justify-content:space-between;align-items:center;height:58px}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.3px}.logo span{color:var(--accent)}
+.btn{background:var(--accent);color:var(--accent-t);border:0;border-radius:12px;padding:13px 24px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.s{padding:9px 18px;font-size:.9rem}
+.hero{position:relative;overflow:hidden;padding:72px 0 56px}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;z-index:-1}
+.hero::before{width:380px;height:380px;right:-120px;top:-100px;background:var(--soft)}
+.hero::after{width:180px;height:180px;right:90px;bottom:-60px;border:28px solid var(--soft)}
+h1{font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.08;margin:0 0 16px;max-width:640px;letter-spacing:-1px}
+h2{font-size:1.6rem;margin:0 0 20px;letter-spacing:-.4px}
+p{color:var(--muted);margin:0 0 14px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px;color:var(--muted);font-size:.92rem}
+.facts b{color:var(--text)}
+section{padding:36px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.zone{position:relative;border-radius:18px;overflow:hidden;min-height:190px;padding:20px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.zone .n{position:absolute;top:14px;right:18px;font-size:3rem;font-weight:800;opacity:.25;line-height:1}
+.zone h3{margin:0 0 4px;font-size:1.2rem}.zone p{color:#fffd;margin:0;font-size:.9rem}
+.zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-0}
+.zone>*:not(img){position:relative;z-index:1}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;cursor:pointer;transition:.15s}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.card h3{margin:0 0 2px;font-size:1.25rem}
+.pp{font-size:1.9rem;font-weight:800;margin:8px 0 2px}.pp small{font-size:.9rem;font-weight:500;color:var(--muted)}
+.card ul{list-style:none;padding:0;margin:14px 0 0;font-size:.92rem;color:var(--muted)}
+.card li{padding:4px 0 4px 22px;position:relative}
+.card li::before{content:"";position:absolute;left:2px;top:10px;width:10px;height:6px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;max-width:560px}
+form{display:grid;gap:14px}
+.lb{font-size:.85rem;font-weight:600;margin-bottom:6px}
+input.f{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1rem}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px}
+.chip{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:14px;padding:9px 12px;cursor:pointer;text-align:center;min-width:60px;font-size:.95rem}
+.chip small{display:block;color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+.chip b{font-size:1.15rem;display:block}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-t)}
+.chip.on small{color:var(--accent-t);opacity:.85}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1.3rem;cursor:pointer}
+.step b{font-size:1.3rem;min-width:32px;text-align:center}
+.sum{background:var(--soft);border-radius:14px;padding:16px;font-size:.95rem}
+.sum .t{font-size:1.6rem;font-weight:800;color:var(--accent)}
+#ok{display:none;color:var(--accent);font-weight:600}
+footer{border-top:1px solid var(--line);padding:28px 0 36px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="w"><div class="logo">Jump<span>Planet</span></div><a class="btn s" href="#book">Book a party</a></div></nav>
+<header class="hero"><div class="w">
+  <h1>Birthday parties your kids will talk about for weeks</h1>
+  <p>Trampolines, laser tag, VR and escape rooms under one roof. Food, a party host and your own party room are all included.</p>
+  <a class="btn" href="#book">Book a party</a>
+  <div class="facts"><span><b>Ages 3–14</b></span><span>Grip socks required</span><span>Parents stay free</span><span>Trained staff on every floor</span></div>
+</div></header>
+<main class="w">
+  <section><h2>Our attractions</h2><div class="grid" id="zl"></div></section>
+  <section><h2>Party packages</h2><div class="grid" id="pl"></div></section>
+  <section id="book"><h2>Book your party</h2>
+    <div class="box"><form id="f">
+      <div><div class="lb">Your name</div><input class="f" name="name" required></div>
+      <div><div class="lb">Mobile number</div><input class="f" name="phone" type="tel" required></div>
+      <div><div class="lb">Package</div><div class="chips" id="pk"></div></div>
+      <div><div class="lb">Date</div><div class="chips" id="dc"></div></div>
+      <div><div class="lb">Start time</div><div class="chips" id="tc"></div></div>
+      <div><div class="lb">Number of children</div><div class="step"><button type="button" id="mn" aria-label="Fewer">−</button><b id="kn">12</b><button type="button" id="pl2" aria-label="More">+</button></div></div>
+      <div><div class="lb">Allergies or special requests (optional)</div><input class="f" name="notes"></div>
+      <div class="sum" id="sum"></div>
+      <button class="btn" type="submit">Request booking</button>
+      <div id="ok"></div>
+    </form></div>
+  </section>
+</main>
+<footer><div class="w">Jump Planet · 12 Park Road, Your Town · Open daily 10am–8pm · 07700 900123</div></footer>
+<script>
+const $=i=>document.getElementById(i);
+const zones=[['trampoline','Trampoline park','40+ trampolines, a foam pit and a ninja course.','#5b34ee,#9a7bff'],['lasertag','Laser tag','Team battles in a two-level arena.','#0b8f7d,#4fd0bb'],['vr','VR zone','Immersive games for ages 8 and up.','#d63a74,#ff8fb3'],['escape','Escape rooms','Story-led missions with a game host.','#e07b17,#ffbf72']];
+const packs=[['Bronze','2 hours',199,11,['1 hour of play','1 hour in your party room','Pizza and squash for every child','Party host']],['Silver','2.5 hours',299,15,['Trampolines or laser tag','Party room and host','Pizza, fruit and drinks','Party bags']],['Gold','3 hours',449,21,['All attractions and VR','Party room and host','Birthday cake and food','Photos of the day']]];
+const times=['10:00','12:30','15:00','17:30'];
+const days=[...Array(14)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i+1);return d});
+let sp='Silver',sd=0,st='12:30',kids=12;
+$('zl').innerHTML=zones.map((z,i)=>`<div class="zone" style="background:linear-gradient(135deg,${z[3]})"><span class="n">0${i+1}</span><img src="img/${z[0]}.jpg" alt="${z[1]}" onerror="this.remove()"><h3>${z[1]}</h3><p>${z[2]}</p></div>`).join('');
+function render(){
+  $('pl').innerHTML=packs.map(p=>`<div class="card ${sp===p[0]?'sel':''}" data-p="${p[0]}"><h3>${p[0]}</h3><p style="margin:0">${p[1]}</p><div class="pp">£${p[2]}<small> + £${p[3]} per child</small></div><ul>${p[4].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+  $('pk').innerHTML=packs.map(p=>`<button type="button" class="chip ${sp===p[0]?'on':''}" data-p="${p[0]}"><b>${p[0]}</b><small>${p[1]}</small></button>`).join('');
+  $('dc').innerHTML=days.map((d,i)=>`<button type="button" class="chip ${sd===i?'on':''}" data-d="${i}"><small>${d.toLocaleDateString('en-GB',{weekday:'short'})}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString('en-GB',{month:'short'})}</small></button>`).join('');
+  $('tc').innerHTML=times.map(t=>`<button type="button" class="chip ${st===t?'on':''}" data-t="${t}"><b>${t}</b></button>`).join('');
+  const p=packs.find(x=>x[0]===sp);
+  $('kn').textContent=kids;
+  $('sum').innerHTML=`${p[0]} package · ${kids} children<br>${days[sd].toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})} at ${st}<div class="t">£${p[2]+p[3]*kids}</div>Estimated total`;
+  document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{sp=b.dataset.p;render();if(b.classList.contains('card'))$('book').scrollIntoView()});
+  document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{sd=+b.dataset.d;render()});
+  document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{st=b.dataset.t;render()});
+}
+$('mn').onclick=()=>{kids=Math.max(8,kids-1);render()};
+$('pl2').onclick=()=>{kids=Math.min(30,kids+1);render()};
+$('f').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.target,d=Object.fromEntries(new FormData(form)),btn=form.querySelector('button[type=submit]'),p=packs.find(x=>x[0]===sp);
+  const when=days[sd].toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})+' at '+st;
+  const text='New party booking\nName: '+d.name+'\nPhone: '+d.phone+'\nPackage: '+sp+'\nWhen: '+when+'\nChildren: '+kids+'\nEstimate: £'+(p[2]+p[3]*kids)+'\nNotes: '+(d.notes||'-');
+  btn.disabled=true;
+  try{
+    const r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+    if(!r.ok)throw new Error('send failed');
+    $('ok').textContent='Thanks, '+d.name+'! We’ll call you to confirm your '+sp+' party on '+when+'.';
+  }catch(err){$('ok').textContent='Sorry, we could not send your request. Please call us.'}
+  $('ok').style.display='block';btn.disabled=false;
+});
+render();
+</script>
+</body>
+</html>
